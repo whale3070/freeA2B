@@ -11,4 +11,7 @@ pdf_file = "input.pdf"
 output_prefix = "output"
 
 # 调用函数进行转换
-convert_pdf_to_png(pdf_file, output_prefix)
+try:
+    convert_pdf_to_png(pdf_file, output_prefix)
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
