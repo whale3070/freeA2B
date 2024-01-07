@@ -5,8 +5,12 @@
 
 2.
 使用whisper`自动给mp4视频添加字幕`。相关模块请自行安装，不要问我，我已经不记得安装了哪些模块了。
-使用方法python mp4_srt.py xx.mp4
+使用方法python3 mp4_srt.py xx.mp4
+
 xx.mp4是没有字幕的版本。脚本运行后会生成srt字幕文件和已添加字幕的mp4视频。
+
+使用方法
+python3 multi_mp4_srt.py "windows文件夹的绝对路径，例如C:\Users\whale\Videos"
 
 3. 
 文档处理：免费将PDF转换PNG格式 
