@@ -46,23 +46,33 @@ def generate_subtitles(video_path):
     output_video_path = base_name + '_srt.mp4'
 
     # 检查是否存在字幕文件
-    if not os.path.isfile(srt_path):
-        # 生成字幕文件
-        audio_path = video_to_mp3(video_path)
-        mp3_to_srt(audio_path)
-        os.remove(audio_path)  # 清理临时音频文件
+    if os.path.isfile(srt_path) or os.path.isfile(output_video_path):
+        # 如果存在字幕文件或已处理过的视频文件，跳过当前视频
+        print(f"Skipping {video_path} as subtitle or processed video already exists.")
+        return
+    # 生成字幕文件
+    audio_path = video_to_mp3(video_path)
+    mp3_to_srt(audio_path)
+    os.remove(audio_path)  # 清理临时音频文件
 
     # 添加字幕到视频
     add_subtitles_to_video(video_path, srt_path, output_video_path)
 
 def process_all_mp4_files_in_directory(directory):
     # 获取目录下所有的 mp4 文件
-    mp4_files = [f for f in os.listdir(directory) if f.endswith(".mp4")]
+    all_files = os.listdir(directory)
+    mp4_files = [f for f in all_files if f.endswith(".mp4")]
 
-    for mp4_file in mp4_files:
+    # 过滤掉那些已经有相应 _srt.mp4 文件的原始 mp4 文件
+    mp4_files_to_process = []
+    for f in mp4_files:
+        base_name = os.path.splitext(f)[0]
+        if not any(file.startswith(base_name) and file.endswith('_srt.mp4') for file in all_files):
+            mp4_files_to_process.append(f)
+
+    for mp4_file in mp4_files_to_process:
         video_path = os.path.join(directory, mp4_file)
         generate_subtitles(video_path)
-
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 mp42srt.py <video_path_or_directory>")
