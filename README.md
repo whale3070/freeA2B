@@ -11,6 +11,7 @@ xx.mp4是没有字幕的版本。脚本运行后会生成srt字幕文件和已�
 
 使用方法
 python3 multi_mp4_srt.py "windows文件夹的绝对路径，例如C:\Users\whale\Videos"
+![image](https://github.com/whale3070/freeA2B/assets/29242426/4b8ad688-8b64-4003-911f-7851067c7bee)
 
 3. 
 文档处理：免费将PDF转换PNG格式 
