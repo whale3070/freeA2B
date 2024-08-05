@@ -24,3 +24,6 @@ python3 multi_mp4_srt.py "windows文件夹的绝对路径，例如C:\Users\whale
 
 4. 
 图片处理：免费将图片加上水印
+
+5. 图片压缩
+   某些政府网站需要小于4mb的图片。使用Image Compression脚本可以保护隐私、快速压缩身份证等照片。
