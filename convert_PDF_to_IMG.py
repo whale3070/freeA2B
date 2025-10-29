@@ -1,5 +1,5 @@
 import fitz  # PyMuPDF
-
+#pip install pymupdf
 def convert_pdf_to_png(pdf_path, output_prefix):
     doc = fitz.open(pdf_path)
     for i, page in enumerate(doc):
