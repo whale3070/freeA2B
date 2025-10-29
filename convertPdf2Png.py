@@ -1,5 +1,5 @@
 from pdf2image import convert_from_path
-
+#淘汰了这个版本的。因为必须下载按照poppler模块，比较麻烦
 def convert_pdf_to_png(pdf_path, output_prefix):
     images = convert_from_path(pdf_path)
     for i, image in enumerate(images):
